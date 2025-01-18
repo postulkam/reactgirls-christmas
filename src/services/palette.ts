@@ -5,7 +5,8 @@ export const paletteNodeDataArray = [
   {key: "circle", category: "Circle"},
   {key: "star", category: "Star"},
   {key: "heart", category: "Heart"},
-  {key: "octagon", category: "Octagon"}
+  {key: "octagon", category: "Octagon"},
+  {key: "diamond", category: "Diamond"},
 ];
 
 export const initPalette = (): Palette => {
@@ -19,6 +20,7 @@ export const initPalette = (): Palette => {
   palette.nodeTemplateMap.add('Star', getPaletteTemplate('FivePointedStar', 'yellow'))
   palette.nodeTemplateMap.add('Heart', getPaletteTemplate('Heart', 'red'))
   palette.nodeTemplateMap.add('Octagon', getPaletteTemplate('Octagon', 'green'))
+  palette.nodeTemplateMap.add('Diamond', getPaletteTemplate('Diamond', 'purple'))
 
   return palette
 }

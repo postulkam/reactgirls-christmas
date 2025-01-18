@@ -31,6 +31,7 @@ export const initDiagram = (): Diagram => {
   diagram.nodeTemplateMap.add('Star', getDiagramTemplate('FivePointedStar', 'yellow'))
   diagram.nodeTemplateMap.add('Heart', getDiagramTemplate('Heart', 'red'))
   diagram.nodeTemplateMap.add('Octagon', getDiagramTemplate('Octagon', 'green'))
+  diagram.nodeTemplateMap.add('Diamond', getDiagramTemplate('Diamond', 'purple'))
 
 
   return diagram;

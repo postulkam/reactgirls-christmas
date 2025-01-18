@@ -3,7 +3,7 @@
 import {Geometry, PathFigure, PathSegment, Point, SegmentType, Shape, Spot} from "gojs";
 
 // The following functions are used by a group of regular figures that are defined below:
-const _CachedArrays = [];
+const _CachedArrays: any[] = [];
 
 function tempArray() {
   const temp = _CachedArrays.pop();
@@ -15,7 +15,7 @@ function tempArray() {
 /**
  * @param a
  */
-function freeArray(a) {
+function freeArray(a: any) {
   a.length = 0; // clear any references to objects
   _CachedArrays.push(a);
 }
@@ -31,7 +31,7 @@ function freeArray(a) {
  * @param q2y
  * @param result
  */
-function getIntersection(p1x, p1y, p2x, p2y, q1x, q1y, q2x, q2y, result) {
+function getIntersection(p1x: number, p1y: number, p2x: number, p2y: number, q1x: number, q1y: number, q2x: number, q2y: number, result: Point) {
   if (!result)
     result = new Point();
   const dx1 = p1x - p2x;
@@ -77,7 +77,7 @@ function getIntersection(p1x, p1y, p2x, p2y, q1x, q1y, q2x, q2y, result) {
  * This allocates a temporary Array that should be freeArray()'ed by the caller.
  * @param sides
  */
-function createPolygon(sides) {
+function createPolygon(sides: any) {
   // Point[] points = new Point[sides + 1];
   const points = [];
   const radius = 0.5;
@@ -99,7 +99,7 @@ function createPolygon(sides) {
  * This allocates a temporary Array that should be freeArray()'ed by the caller.
  * @param points
  */
-function createStar(points) {
+function createStar(points: any) {
   // First, create a regular polygon
   const polygon = createPolygon(points);
   // Calculate the points inbetween
@@ -124,7 +124,7 @@ function createStar(points) {
 export class CustomShape extends Shape {
 }
 
-CustomShape.defineFigureGenerator('FivePointedStar', function (shape, w, h) {
+CustomShape.defineFigureGenerator('FivePointedStar', function (_, w, h) {
   const starPoints = createStar(5);
   const geo = new Geometry();
   const fig = new PathFigure(starPoints[0].x * w, starPoints[0].y * h, true);
@@ -140,7 +140,7 @@ CustomShape.defineFigureGenerator('FivePointedStar', function (shape, w, h) {
   return geo;
 });
 
-CustomShape.defineFigureGenerator('Heart', function (shape, w, h) {
+CustomShape.defineFigureGenerator('Heart', function (_, w, h) {
   const geo = new Geometry()
     .add(new PathFigure(0.5 * w, h, true)
       .add(new PathSegment(SegmentType.Bezier, 0, 0.3 * h, 0.1 * w, 0.8 * h, 0, 0.5 * h))
@@ -152,7 +152,7 @@ CustomShape.defineFigureGenerator('Heart', function (shape, w, h) {
   return geo;
 });
 
-CustomShape.defineFigureGenerator('Octagon', function (shape, w, h) {
+CustomShape.defineFigureGenerator('Octagon', function (_, w, h) {
   const points = createPolygon(8);
   const geo = new Geometry();
   const fig = new PathFigure(points[0].x * w, points[0].y * h, true);
