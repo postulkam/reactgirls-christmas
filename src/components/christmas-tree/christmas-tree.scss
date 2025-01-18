@@ -1,0 +1,31 @@
+.tree-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.tree-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.diagram-component {
+  width: 600px;
+  height: 600px;
+  background-color: #691516;
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.palette-component {
+  width: 120px;
+  height: 556px;
+  border: none;
+  border-top-left-radius: 8px;
+  background-color: #802a2c;
+  margin-right: 4px;
+}
